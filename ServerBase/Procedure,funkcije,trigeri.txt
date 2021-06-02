@@ -1,0 +1,129 @@
+USE [MilitaryAviationBase]
+GO
+/****** Object:  Trigger [dbo].[TriggerCreateOC]    Script Date: 6/2/2021 9:50:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[TriggerCreateOC]
+ON [dbo].[OCs]
+FOR INSERT
+AS
+;
+declare @name varchar(30);
+select @name = i.ID_OC from inserted i;
+insert into OCs(BBG_OC)
+values(0);
+
+
+USE [MilitaryAviationBase]
+GO
+/****** Object:  Trigger [dbo].[TriggerDeleteOZL]    Script Date: 6/2/2021 9:50:56 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[TriggerDeleteOZL]
+ON [dbo].[OZLs]
+FOR DELETE
+AS
+;
+declare @name varchar(30);
+select @name = i.ADR_OZL from deleted i;
+insert into OZLs (ADR_OZL,NO_OZL)
+values(@name,'Pending');
+
+
+USE [MilitaryAviationBase]
+GO
+/****** Object:  UserDefinedFunction [dbo].[F_BEST_PILOT]    Script Date: 6/2/2021 9:51:06 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER FUNCTION [dbo].[F_BEST_PILOT]
+() RETURNS INT
+AS
+BEGIN
+DECLARE
+	@return_value
+	AS INT
+	SELECT @return_value = pl.ID_PIL from Pilots pl left outer join Avions av
+						   on av.ID_AV = pl.AvionID_AV
+						   group by pl.ID_PIL, av.HP_AV
+						   having av.HP_AV = MAX(av.HP_AV)
+	RETURN @return_value
+END;
+
+
+USE [MilitaryAviationBase]
+GO
+/****** Object:  UserDefinedFunction [dbo].[F_LOVAC_NUMBER]    Script Date: 6/2/2021 9:51:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER FUNCTION [dbo].[F_LOVAC_NUMBER]
+()
+RETURNS DECIMAL
+AS
+BEGIN
+DECLARE
+	@return_value AS DECIMAL
+	SELECT @return_value = count(av.ID_AV) FROM Avions av
+				           where av.TIP_AV = 0
+RETURN
+@return_value
+END
+
+
+USE [MilitaryAviationBase]
+GO
+/****** Object:  StoredProcedure [dbo].[P_AIRPLANE_Remont]    Script Date: 6/2/2021 9:51:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[P_AIRPLANE_Remont]
+(@P_BL_AV INT,@P_CountProj INT OUT)
+AS
+BEGIN TRY
+	SELECT @P_CountProj = count(*)
+    FROM Avions
+	WHERE BL_AV >= @P_BL_AV
+END TRY
+BEGIN CATCH
+SELECT
+ERROR_NUMBER() AS
+ErrorNumber
+,ERROR_MESSAGE() AS
+ErrorMessage ;
+END CATCH;
+
+
+USE [MilitaryAviationBase]
+GO
+/****** Object:  StoredProcedure [dbo].[P_INS_Radionica]    Script Date: 6/2/2021 9:51:35 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE
+[dbo].[P_INS_Radionica]
+(
+@P_IME_RAD VARCHAR(20),
+@P_BM_RAD INT
+)
+AS
+BEGIN TRY
+INSERT INTO
+Radionice (IME_RAD,BM_RAD)
+VALUES (@P_IME_RAD, @P_BM_RAD);
+END TRY
+BEGIN CATCH
+SELECT
+ERROR_NUMBER() AS
+ErrorNumber
+,ERROR_MESSAGE() AS
+ErrorMessage ;
+END CATCH

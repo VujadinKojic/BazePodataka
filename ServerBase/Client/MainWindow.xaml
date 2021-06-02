@@ -1,0 +1,84 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <Menu Background="#FFA9D1F4" DockPanel.Dock="Top" Margin="0,10,0,374" RenderTransformOrigin="0.514,1.236">
+            <MenuItem x:Name="RadionicaTab" Click="Radionica_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="Radionica" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <Separator Width="15" />
+            <MenuItem x:Name="AvioTehnicarTab" Click="AvioTehnicar_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="AvioTehnicar" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <Separator Width="15" />
+            <MenuItem x:Name="EskadrilaTab" Click="Eskadrila_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="Eskadrila" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <Separator Width="15" />
+            <MenuItem x:Name="AvionTab" Click="Avion_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="Avion" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem x:Name="PilotTab" Click="Pilot_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="Pilot" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem x:Name="OzlTab" Click="Ozl_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="OZL" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem x:Name="OCTab" Click="OC_Click">
+                <MenuItem.Header>
+                    <TextBlock FontSize="22" Text="OC" VerticalAlignment="Center"/>
+                </MenuItem.Header>
+            </MenuItem>
+            <Separator Width="30" />
+            <Separator Width="30" />
+            <MenuItem x:Name="ActionTab">
+                <MenuItem.Header>
+                    <DockPanel>
+                        <TextBlock FontSize="22" VerticalAlignment="Center">CRUD</TextBlock>
+                        <TextBlock Width="10"></TextBlock>
+                    </DockPanel>
+                </MenuItem.Header>
+                <MenuItem x:Name="Add" Header="Add" Click="Add_Click"></MenuItem>
+                <MenuItem x:Name="Update" Header="Update" Click="Update_Click"></MenuItem>
+                <MenuItem x:Name="Delete" Header="Delete" Click="Delete_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="myDataGrid" IsReadOnly="True" HorizontalAlignment="Left" Height="359" Margin="10,46,0,0" VerticalAlignment="Top" Width="472" SelectionChanged="myDataGrid_SelectionChanged"/>
+        <TextBlock x:Name="Block1" HorizontalAlignment="Center" Margin="487,51,175,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="36" Width="130"/>
+        <TextBlock x:Name="Block2" HorizontalAlignment="Center" Margin="487,92,175,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="36" Width="130"/>
+        <TextBlock x:Name="Block3" HorizontalAlignment="Center" Margin="487,133,175,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="36" Width="130"/>
+        <TextBlock x:Name="Block4" HorizontalAlignment="Center" Margin="487,174,175,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="36" Width="130"/>
+        <TextBox x:Name="Box1" HorizontalAlignment="Left" Height="36" FontSize="20" Margin="622,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Box2" HorizontalAlignment="Left" Height="36" FontSize="20" Margin="622,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <ComboBox x:Name="Combo1" HorizontalAlignment="Left" Margin="622,133,0,0" VerticalAlignment="Top" Width="160" Height="36"/>
+        <ComboBox x:Name="Combo2" HorizontalAlignment="Left" Margin="622,174,0,0" VerticalAlignment="Top" Width="160" Height="36"/>
+        <ComboBox x:Name="Combo3" HorizontalAlignment="Left" Margin="622,215,0,0" VerticalAlignment="Top" Width="160" Height="36"/>
+        <TextBlock x:Name="Block5" HorizontalAlignment="Center" Margin="487,215,175,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="36" Width="130"/>
+        <Button x:Name="ButtonRemont" Content="Avioni za remont:" HorizontalAlignment="Left" Margin="488,372,0,0" VerticalAlignment="Top" Width="129" Height="33" Click="ButtonRemont_Click" FontSize="15" />
+        <TextBlock x:Name="BlockRemont" HorizontalAlignment="Center" Margin="622,372,124,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="33" Width="48"/>
+        <TextBlock x:Name="BlockRemontCasovi" HorizontalAlignment="Center" Margin="489,336,176,0" TextWrapping="Wrap" Text=" Broj casova:" VerticalAlignment="Top" FontSize="20" Height="41" Width="129"/>
+        <TextBox x:Name="BoxRemont" HorizontalAlignment="Left" Height="36" FontSize="20" Margin="622,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="48"/>
+        <Button x:Name="DodajRadionicu" Content="Test radionica" HorizontalAlignment="Left" Margin="677,372,0,0" VerticalAlignment="Top" Width="107" Height="33" FontSize="15" RenderTransformOrigin="0.15,-2.44" Click="DodajRadionicu_Click"/>
+        <Button x:Name="ButtonPilot" Content="Pilot sa najjacim avionom:" HorizontalAlignment="Left" Margin="489,294,0,0" VerticalAlignment="Top" Width="182" Height="33" FontSize="15" Click="ButtonPilot_Click" />
+        <Button x:Name="ButtonLovac" Content="Broj lovaca:" HorizontalAlignment="Left" Margin="489,256,0,0" VerticalAlignment="Top" Width="182" Height="33" FontSize="15" Click="ButtonLovac_Click" />
+        <TextBlock x:Name="BlockPilot" HorizontalAlignment="Center" Margin="676,294,70,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="33" Width="48"/>
+        <TextBlock x:Name="BlockLovac" HorizontalAlignment="Center" Margin="676,256,70,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="20" Height="33" Width="48"/>
+    </Grid>
+</Window>

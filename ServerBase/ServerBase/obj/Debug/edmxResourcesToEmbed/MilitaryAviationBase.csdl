@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MilitaryAviationBase" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="MilitaryAviationBaseContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Radionice" EntityType="MilitaryAviationBase.Radionica" />
+    <EntitySet Name="AvioTehnicari" EntityType="MilitaryAviationBase.AvioTehnicar" />
+    <EntitySet Name="Eskadrile" EntityType="MilitaryAviationBase.Eskadrila" />
+    <EntitySet Name="Avions" EntityType="MilitaryAviationBase.Avion" />
+    <EntitySet Name="PretpoletniPregleds" EntityType="MilitaryAviationBase.PretpoletniPregled" />
+    <AssociationSet Name="AvioTehnicarPretpoletniPregled" Association="MilitaryAviationBase.AvioTehnicarPretpoletniPregled">
+      <End Role="AvioTehnicar" EntitySet="AvioTehnicari" />
+      <End Role="PretpoletniPregled" EntitySet="PretpoletniPregleds" />
+    </AssociationSet>
+    <AssociationSet Name="AvionPretpoletniPregled" Association="MilitaryAviationBase.AvionPretpoletniPregled">
+      <End Role="Avion" EntitySet="Avions" />
+      <End Role="PretpoletniPregled" EntitySet="PretpoletniPregleds" />
+    </AssociationSet>
+    <EntitySet Name="Pilots" EntityType="MilitaryAviationBase.Pilot" />
+    <AssociationSet Name="Leti" Association="MilitaryAviationBase.Leti">
+      <End Role="Avion" EntitySet="Avions" />
+      <End Role="Pilot" EntitySet="Pilots" />
+    </AssociationSet>
+    <EntitySet Name="OZLs" EntityType="MilitaryAviationBase.OZL" />
+    <EntitySet Name="Izvestavas" EntityType="MilitaryAviationBase.Izvestava" />
+    <AssociationSet Name="IzvestavaOZL" Association="MilitaryAviationBase.IzvestavaOZL">
+      <End Role="Izvestava" EntitySet="Izvestavas" />
+      <End Role="OZL" EntitySet="OZLs" />
+    </AssociationSet>
+    <AssociationSet Name="Radi" Association="MilitaryAviationBase.Radi">
+      <End Role="Radionica" EntitySet="Radionice" />
+      <End Role="AvioTehnicar" EntitySet="AvioTehnicari" />
+    </AssociationSet>
+    <AssociationSet Name="OZLPilot" Association="MilitaryAviationBase.OZLPilot">
+      <End Role="OZL" EntitySet="OZLs" />
+      <End Role="Pilot" EntitySet="Pilots" />
+    </AssociationSet>
+    <EntitySet Name="Naoruzanjes" EntityType="MilitaryAviationBase.Naoruzanje" />
+    <AssociationSet Name="NaoruzanjeLovac" Association="MilitaryAviationBase.NaoruzanjeLovac">
+      <End Role="Naoruzanje" EntitySet="Naoruzanjes" />
+      <End Role="Lovac" EntitySet="Avions" />
+    </AssociationSet>
+    <AssociationSet Name="NaoruzanjeElektroOpremaVazduhoplova" Association="MilitaryAviationBase.NaoruzanjeElektroOpremaVazduhoplova">
+      <End Role="Naoruzanje" EntitySet="Naoruzanjes" />
+      <End Role="ElektroOpremaVazduhoplova" EntitySet="AvioTehnicari" />
+    </AssociationSet>
+    <EntitySet Name="OCs" EntityType="MilitaryAviationBase.OC" />
+    <EntitySet Name="Uzimas" EntityType="MilitaryAviationBase.Uzima" />
+    <AssociationSet Name="OCUzima" Association="MilitaryAviationBase.OCUzima">
+      <End Role="OC" EntitySet="OCs" />
+      <End Role="Uzima" EntitySet="Uzimas" />
+    </AssociationSet>
+    <AssociationSet Name="NaoruzanjeUzima" Association="MilitaryAviationBase.NaoruzanjeUzima">
+      <End Role="Naoruzanje" EntitySet="Naoruzanjes" />
+      <End Role="Uzima" EntitySet="Uzimas" />
+    </AssociationSet>
+    <AssociationSet Name="AvioTehnicarEskadrila" Association="MilitaryAviationBase.AvioTehnicarEskadrila">
+      <End Role="AvioTehnicar" EntitySet="AvioTehnicari" />
+      <End Role="Eskadrila" EntitySet="Eskadrile" />
+    </AssociationSet>
+    <AssociationSet Name="IzvestavaPretpoletniPregled" Association="MilitaryAviationBase.IzvestavaPretpoletniPregled">
+      <End Role="Izvestava" EntitySet="Izvestavas" />
+      <End Role="PretpoletniPregled" EntitySet="PretpoletniPregleds" />
+    </AssociationSet>
+    <AssociationSet Name="EskadrilaPilot" Association="MilitaryAviationBase.EskadrilaPilot">
+      <End Role="Eskadrila" EntitySet="Eskadrile" />
+      <End Role="Pilot" EntitySet="Pilots" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Radionica">
+    <Key>
+      <PropertyRef Name="ID_RAD" />
+    </Key>
+    <Property Name="ID_RAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IME_RAD" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="BM_RAD" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AvioTehnicars" Relationship="MilitaryAviationBase.Radi" FromRole="Radionica" ToRole="AvioTehnicar" />
+  </EntityType>
+  <EntityType Name="AvioTehnicar">
+    <Key>
+      <PropertyRef Name="ID_AT" />
+    </Key>
+    <Property Name="ID_AT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IME_AT" Type="String" Nullable="false" />
+    <Property Name="BG_AT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PretpoletniPregleds" Relationship="MilitaryAviationBase.AvioTehnicarPretpoletniPregled" FromRole="AvioTehnicar" ToRole="PretpoletniPregled" />
+    <NavigationProperty Name="Radionica" Relationship="MilitaryAviationBase.Radi" FromRole="AvioTehnicar" ToRole="Radionica" />
+    <Property Name="RadionicaID_RAD" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="Eskadrila" Relationship="MilitaryAviationBase.AvioTehnicarEskadrila" FromRole="AvioTehnicar" ToRole="Eskadrila" />
+    <Property Name="EskadrilaID_ESK" Type="Int32" Nullable="true" />
+    <Property Name="TIP_AT" Type="MilitaryAviationBase.TIP_AT" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Eskadrila">
+    <Key>
+      <PropertyRef Name="ID_ESK" />
+    </Key>
+    <Property Name="ID_ESK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GRB_ESK" Type="String" Nullable="false" />
+    <Property Name="IME_ESK" Type="String" Nullable="false" />
+    <NavigationProperty Name="AvioTehnicars" Relationship="MilitaryAviationBase.AvioTehnicarEskadrila" FromRole="Eskadrila" ToRole="AvioTehnicar" />
+    <NavigationProperty Name="Pilots" Relationship="MilitaryAviationBase.EskadrilaPilot" FromRole="Eskadrila" ToRole="Pilot" />
+  </EntityType>
+  <EntityType Name="Avion">
+    <Key>
+      <PropertyRef Name="ID_AV" />
+    </Key>
+    <Property Name="ID_AV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HP_AV" Type="Int32" Nullable="false" />
+    <Property Name="BL_AV" Type="String" Nullable="false" />
+    <NavigationProperty Name="PretpoletniPregleds" Relationship="MilitaryAviationBase.AvionPretpoletniPregled" FromRole="Avion" ToRole="PretpoletniPregled" />
+    <NavigationProperty Name="Pilots" Relationship="MilitaryAviationBase.Leti" FromRole="Avion" ToRole="Pilot" />
+    <Property Name="TIP_AV" Type="MilitaryAviationBase.TIP_AV" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PretpoletniPregled">
+    <Key>
+      <PropertyRef Name="AvioTehnicarID_AT" />
+      <PropertyRef Name="AvionID_AV" />
+    </Key>
+    <NavigationProperty Name="AvioTehnicar" Relationship="MilitaryAviationBase.AvioTehnicarPretpoletniPregled" FromRole="PretpoletniPregled" ToRole="AvioTehnicar" />
+    <Property Name="AvioTehnicarID_AT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Avion" Relationship="MilitaryAviationBase.AvionPretpoletniPregled" FromRole="PretpoletniPregled" ToRole="Avion" />
+    <Property Name="AvionID_AV" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Izvestavas" Relationship="MilitaryAviationBase.IzvestavaPretpoletniPregled" FromRole="PretpoletniPregled" ToRole="Izvestava" />
+  </EntityType>
+  <Association Name="AvioTehnicarPretpoletniPregled">
+    <End Type="MilitaryAviationBase.AvioTehnicar" Role="AvioTehnicar" Multiplicity="1" />
+    <End Type="MilitaryAviationBase.PretpoletniPregled" Role="PretpoletniPregled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AvioTehnicar">
+        <PropertyRef Name="ID_AT" />
+      </Principal>
+      <Dependent Role="PretpoletniPregled">
+        <PropertyRef Name="AvioTehnicarID_AT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvionPretpoletniPregled">
+    <End Type="MilitaryAviationBase.Avion" Role="Avion" Multiplicity="1" />
+    <End Type="MilitaryAviationBase.PretpoletniPregled" Role="PretpoletniPregled" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avion">
+        <PropertyRef Name="ID_AV" />
+      </Principal>
+      <Dependent Role="PretpoletniPregled">
+        <PropertyRef Name="AvionID_AV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Pilot">
+    <Key>
+      <PropertyRef Name="ID_PIL" />
+    </Key>
+    <Property Name="ID_PIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RN_PIL" Type="String" Nullable="false" />
+    <NavigationProperty Name="Avion" Relationship="MilitaryAviationBase.Leti" FromRole="Pilot" ToRole="Avion" />
+    <Property Name="AvionID_AV" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="OZL" Relationship="MilitaryAviationBase.OZLPilot" FromRole="Pilot" ToRole="OZL" />
+    <Property Name="OZLID_OZL" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="Eskadrila" Relationship="MilitaryAviationBase.EskadrilaPilot" FromRole="Pilot" ToRole="Eskadrila" />
+    <Property Name="EskadrilaID_ESK1" Nullable="true" Type="Int32" />
+  </EntityType>
+  <Association Name="Leti">
+    <End Type="MilitaryAviationBase.Avion" Role="Avion" Multiplicity="0..1" />
+    <End Type="MilitaryAviationBase.Pilot" Role="Pilot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avion">
+        <PropertyRef Name="ID_AV" />
+      </Principal>
+      <Dependent Role="Pilot">
+        <PropertyRef Name="AvionID_AV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OZL">
+    <Key>
+      <PropertyRef Name="ID_OZL" />
+    </Key>
+    <Property Name="ID_OZL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADR_OZL" Type="String" Nullable="false" />
+    <Property Name="NO_OZL" Type="String" Nullable="false" />
+    <NavigationProperty Name="Izvestavas" Relationship="MilitaryAviationBase.IzvestavaOZL" FromRole="OZL" ToRole="Izvestava" />
+    <NavigationProperty Name="Pilots" Relationship="MilitaryAviationBase.OZLPilot" FromRole="OZL" ToRole="Pilot" />
+  </EntityType>
+  <EntityType Name="Izvestava">
+    <Key>
+      <PropertyRef Name="ID_OZL" />
+      <PropertyRef Name="PretpoletniPregledID_AV" />
+      <PropertyRef Name="PretpoletniPregledID_AT" />
+    </Key>
+    <Property Name="ID_OZL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="OZL" Relationship="MilitaryAviationBase.IzvestavaOZL" FromRole="Izvestava" ToRole="OZL" />
+    <Property Name="PretpoletniPregledID_AV" Type="Int32" Nullable="false" />
+    <Property Name="PretpoletniPregledID_AT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PretpoletniPregled" Relationship="MilitaryAviationBase.IzvestavaPretpoletniPregled" FromRole="Izvestava" ToRole="PretpoletniPregled" />
+  </EntityType>
+  <Association Name="IzvestavaOZL">
+    <End Type="MilitaryAviationBase.Izvestava" Role="Izvestava" Multiplicity="*" />
+    <End Type="MilitaryAviationBase.OZL" Role="OZL" Multiplicity="1" />
+  </Association>
+  <Association Name="Radi">
+    <End Type="MilitaryAviationBase.Radionica" Role="Radionica" Multiplicity="0..1" />
+    <End Type="MilitaryAviationBase.AvioTehnicar" Role="AvioTehnicar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Radionica">
+        <PropertyRef Name="ID_RAD" />
+      </Principal>
+      <Dependent Role="AvioTehnicar">
+        <PropertyRef Name="RadionicaID_RAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OZLPilot">
+    <End Type="MilitaryAviationBase.OZL" Role="OZL" Multiplicity="0..1" />
+    <End Type="MilitaryAviationBase.Pilot" Role="Pilot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OZL">
+        <PropertyRef Name="ID_OZL" />
+      </Principal>
+      <Dependent Role="Pilot">
+        <PropertyRef Name="OZLID_OZL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ElektroOpremaVazduhoplova" BaseType="MilitaryAviationBase.AvioTehnicar">
+    <NavigationProperty Name="Naoruzanjes" Relationship="MilitaryAviationBase.NaoruzanjeElektroOpremaVazduhoplova" FromRole="ElektroOpremaVazduhoplova" ToRole="Naoruzanje" />
+  </EntityType>
+  <EntityType Name="VazduhoplovIMotor" BaseType="MilitaryAviationBase.AvioTehnicar" />
+  <EntityType Name="ElektronskaOpremaVazduhoplova" BaseType="MilitaryAviationBase.AvioTehnicar" />
+  <EntityType Name="Lovac" BaseType="MilitaryAviationBase.Avion">
+    <Property Name="SMR_AV" Type="String" Nullable="false" />
+    <NavigationProperty Name="Naoruzanjes" Relationship="MilitaryAviationBase.NaoruzanjeLovac" FromRole="Lovac" ToRole="Naoruzanje" />
+  </EntityType>
+  <EntityType Name="Transportni" BaseType="MilitaryAviationBase.Avion">
+    <Property Name="SMP_AV" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Naoruzanje">
+    <Key>
+      <PropertyRef Name="LovacID_AV" />
+      <PropertyRef Name="ElektroOpremaVazduhoplovaID_AT" />
+    </Key>
+    <NavigationProperty Name="Lovac" Relationship="MilitaryAviationBase.NaoruzanjeLovac" FromRole="Naoruzanje" ToRole="Lovac" />
+    <Property Name="LovacID_AV" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ElektroOpremaVazduhoplova" Relationship="MilitaryAviationBase.NaoruzanjeElektroOpremaVazduhoplova" FromRole="Naoruzanje" ToRole="ElektroOpremaVazduhoplova" />
+    <Property Name="ElektroOpremaVazduhoplovaID_AT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Uzimas" Relationship="MilitaryAviationBase.NaoruzanjeUzima" FromRole="Naoruzanje" ToRole="Uzima" />
+  </EntityType>
+  <Association Name="NaoruzanjeLovac">
+    <End Type="MilitaryAviationBase.Naoruzanje" Role="Naoruzanje" Multiplicity="*" />
+    <End Type="MilitaryAviationBase.Lovac" Role="Lovac" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Lovac">
+        <PropertyRef Name="ID_AV" />
+      </Principal>
+      <Dependent Role="Naoruzanje">
+        <PropertyRef Name="LovacID_AV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NaoruzanjeElektroOpremaVazduhoplova">
+    <End Type="MilitaryAviationBase.Naoruzanje" Role="Naoruzanje" Multiplicity="*" />
+    <End Type="MilitaryAviationBase.ElektroOpremaVazduhoplova" Role="ElektroOpremaVazduhoplova" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ElektroOpremaVazduhoplova">
+        <PropertyRef Name="ID_AT" />
+      </Principal>
+      <Dependent Role="Naoruzanje">
+        <PropertyRef Name="ElektroOpremaVazduhoplovaID_AT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OC">
+    <Key>
+      <PropertyRef Name="ID_OC" />
+    </Key>
+    <Property Name="ID_OC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BBG_OC" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Uzimas" Relationship="MilitaryAviationBase.OCUzima" FromRole="OC" ToRole="Uzima" />
+  </EntityType>
+  <EntityType Name="Uzima">
+    <Key>
+      <PropertyRef Name="OCID_OC" />
+      <PropertyRef Name="NaoruzanjeLovacID_AV" />
+      <PropertyRef Name="NaoruzanjeElektroOpremaVazduhoplovaID_AT" />
+    </Key>
+    <NavigationProperty Name="OC" Relationship="MilitaryAviationBase.OCUzima" FromRole="Uzima" ToRole="OC" />
+    <Property Name="OCID_OC" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Naoruzanje" Relationship="MilitaryAviationBase.NaoruzanjeUzima" FromRole="Uzima" ToRole="Naoruzanje" />
+    <Property Name="NaoruzanjeLovacID_AV" Type="Int32" Nullable="false" />
+    <Property Name="NaoruzanjeElektroOpremaVazduhoplovaID_AT" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="OCUzima">
+    <End Type="MilitaryAviationBase.OC" Role="OC" Multiplicity="1" />
+    <End Type="MilitaryAviationBase.Uzima" Role="Uzima" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OC">
+        <PropertyRef Name="ID_OC" />
+      </Principal>
+      <Dependent Role="Uzima">
+        <PropertyRef Name="OCID_OC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NaoruzanjeUzima">
+    <End Type="MilitaryAviationBase.Naoruzanje" Role="Naoruzanje" Multiplicity="1" />
+    <End Type="MilitaryAviationBase.Uzima" Role="Uzima" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Naoruzanje">
+        <PropertyRef Name="LovacID_AV" />
+        <PropertyRef Name="ElektroOpremaVazduhoplovaID_AT" />
+      </Principal>
+      <Dependent Role="Uzima">
+        <PropertyRef Name="NaoruzanjeLovacID_AV" />
+        <PropertyRef Name="NaoruzanjeElektroOpremaVazduhoplovaID_AT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvioTehnicarEskadrila">
+    <End Type="MilitaryAviationBase.AvioTehnicar" Role="AvioTehnicar" Multiplicity="*" />
+    <End Type="MilitaryAviationBase.Eskadrila" Role="Eskadrila" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Eskadrila">
+        <PropertyRef Name="ID_ESK" />
+      </Principal>
+      <Dependent Role="AvioTehnicar">
+        <PropertyRef Name="EskadrilaID_ESK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IzvestavaPretpoletniPregled">
+    <End Type="MilitaryAviationBase.Izvestava" Role="Izvestava" Multiplicity="*" />
+    <End Type="MilitaryAviationBase.PretpoletniPregled" Role="PretpoletniPregled" Multiplicity="1" />
+  </Association>
+  <Association Name="EskadrilaPilot">
+    <End Type="MilitaryAviationBase.Eskadrila" Role="Eskadrila" Multiplicity="0..1" />
+    <End Type="MilitaryAviationBase.Pilot" Role="Pilot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eskadrila">
+        <PropertyRef Name="ID_ESK" />
+      </Principal>
+      <Dependent Role="Pilot">
+        <PropertyRef Name="EskadrilaID_ESK1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="TIP_AV">
+    <Member Name="Lovac" />
+    <Member Name="Transportni" />
+  </EnumType>
+  <EnumType Name="TIP_AT">
+    <Member Name="ElektroOprema" />
+    <Member Name="VazduhoplovIMotor" />
+    <Member Name="ElektronskaOprema" />
+  </EnumType>
+</Schema>

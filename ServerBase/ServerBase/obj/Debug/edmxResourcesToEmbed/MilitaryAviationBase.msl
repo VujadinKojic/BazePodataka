@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MilitaryAviationBaseStoreContainer" CdmEntityContainer="MilitaryAviationBaseContainer">
+    <EntitySetMapping Name="Radionice">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Radionica)">
+        <MappingFragment StoreEntitySet="Radionice">
+          <ScalarProperty Name="ID_RAD" ColumnName="ID_RAD" />
+          <ScalarProperty Name="IME_RAD" ColumnName="IME_RAD" />
+          <ScalarProperty Name="BM_RAD" ColumnName="BM_RAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvioTehnicari">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.AvioTehnicar)">
+        <MappingFragment StoreEntitySet="AvioTehnicari">
+          <ScalarProperty Name="ID_AT" ColumnName="ID_AT" />
+          <ScalarProperty Name="IME_AT" ColumnName="IME_AT" />
+          <ScalarProperty Name="BG_AT" ColumnName="BG_AT" />
+          <ScalarProperty Name="RadionicaID_RAD" ColumnName="RadionicaID_RAD" />
+          <ScalarProperty Name="EskadrilaID_ESK" ColumnName="EskadrilaID_ESK" />
+          <ScalarProperty Name="TIP_AT" ColumnName="TIP_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.ElektroOpremaVazduhoplova)">
+        <MappingFragment StoreEntitySet="AvioTehnicari_ElektroOpremaVazduhoplova">
+          <ScalarProperty Name="ID_AT" ColumnName="ID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.VazduhoplovIMotor)">
+        <MappingFragment StoreEntitySet="AvioTehnicari_VazduhoplovIMotor">
+          <ScalarProperty Name="ID_AT" ColumnName="ID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.ElektronskaOpremaVazduhoplova)">
+        <MappingFragment StoreEntitySet="AvioTehnicari_ElektronskaOpremaVazduhoplova">
+          <ScalarProperty Name="ID_AT" ColumnName="ID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eskadrile">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Eskadrila)">
+        <MappingFragment StoreEntitySet="Eskadrile">
+          <ScalarProperty Name="ID_ESK" ColumnName="ID_ESK" />
+          <ScalarProperty Name="GRB_ESK" ColumnName="GRB_ESK" />
+          <ScalarProperty Name="IME_ESK" ColumnName="IME_ESK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avions">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Avion)">
+        <MappingFragment StoreEntitySet="Avions">
+          <ScalarProperty Name="ID_AV" ColumnName="ID_AV" />
+          <ScalarProperty Name="HP_AV" ColumnName="HP_AV" />
+          <ScalarProperty Name="BL_AV" ColumnName="BL_AV" />
+          <ScalarProperty Name="TIP_AV" ColumnName="TIP_AV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Lovac)">
+        <MappingFragment StoreEntitySet="Avions_Lovac">
+          <ScalarProperty Name="ID_AV" ColumnName="ID_AV" />
+          <ScalarProperty Name="SMR_AV" ColumnName="SMR_AV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Transportni)">
+        <MappingFragment StoreEntitySet="Avions_Transportni">
+          <ScalarProperty Name="ID_AV" ColumnName="ID_AV" />
+          <ScalarProperty Name="SMP_AV" ColumnName="SMP_AV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PretpoletniPregleds">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.PretpoletniPregled)">
+        <MappingFragment StoreEntitySet="PretpoletniPregleds">
+          <ScalarProperty Name="AvioTehnicarID_AT" ColumnName="AvioTehnicarID_AT" />
+          <ScalarProperty Name="AvionID_AV" ColumnName="AvionID_AV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pilots">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Pilot)">
+        <MappingFragment StoreEntitySet="Pilots">
+          <ScalarProperty Name="ID_PIL" ColumnName="ID_PIL" />
+          <ScalarProperty Name="RN_PIL" ColumnName="RN_PIL" />
+          <ScalarProperty Name="AvionID_AV" ColumnName="AvionID_AV" />
+          <ScalarProperty Name="OZLID_OZL" ColumnName="OZLID_OZL" />
+          <ScalarProperty Name="EskadrilaID_ESK1" ColumnName="EskadrilaID_ESK1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OZLs">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.OZL)">
+        <MappingFragment StoreEntitySet="OZLs">
+          <ScalarProperty Name="ID_OZL" ColumnName="ID_OZL" />
+          <ScalarProperty Name="ADR_OZL" ColumnName="ADR_OZL" />
+          <ScalarProperty Name="NO_OZL" ColumnName="NO_OZL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Izvestavas">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Izvestava)">
+        <MappingFragment StoreEntitySet="Izvestavas">
+          <ScalarProperty Name="ID_OZL" ColumnName="ID_OZL" />
+          <ScalarProperty Name="PretpoletniPregledID_AV" ColumnName="PretpoletniPregledID_AV" />
+          <ScalarProperty Name="PretpoletniPregledID_AT" ColumnName="PretpoletniPregledID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Naoruzanjes">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Naoruzanje)">
+        <MappingFragment StoreEntitySet="Naoruzanjes">
+          <ScalarProperty Name="LovacID_AV" ColumnName="LovacID_AV" />
+          <ScalarProperty Name="ElektroOpremaVazduhoplovaID_AT" ColumnName="ElektroOpremaVazduhoplovaID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OCs">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.OC)">
+        <MappingFragment StoreEntitySet="OCs">
+          <ScalarProperty Name="ID_OC" ColumnName="ID_OC" />
+          <ScalarProperty Name="BBG_OC" ColumnName="BBG_OC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uzimas">
+      <EntityTypeMapping TypeName="IsTypeOf(MilitaryAviationBase.Uzima)">
+        <MappingFragment StoreEntitySet="Uzimas">
+          <ScalarProperty Name="OCID_OC" ColumnName="OCID_OC" />
+          <ScalarProperty Name="NaoruzanjeLovacID_AV" ColumnName="NaoruzanjeLovacID_AV" />
+          <ScalarProperty Name="NaoruzanjeElektroOpremaVazduhoplovaID_AT" ColumnName="NaoruzanjeElektroOpremaVazduhoplovaID_AT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="IzvestavaOZL" TypeName="MilitaryAviationBase.IzvestavaOZL" StoreEntitySet="Izvestavas">
+      <EndProperty Name="OZL">
+        <ScalarProperty Name="ID_OZL" ColumnName="OZL_ID_OZL" />
+      </EndProperty>
+      <EndProperty Name="Izvestava">
+        <ScalarProperty Name="ID_OZL" ColumnName="ID_OZL" />
+        <ScalarProperty Name="PretpoletniPregledID_AV" ColumnName="PretpoletniPregledID_AV" />
+        <ScalarProperty Name="PretpoletniPregledID_AT" ColumnName="PretpoletniPregledID_AT" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="IzvestavaPretpoletniPregled" TypeName="MilitaryAviationBase.IzvestavaPretpoletniPregled" StoreEntitySet="Izvestavas">
+      <EndProperty Name="PretpoletniPregled">
+        <ScalarProperty Name="AvioTehnicarID_AT" ColumnName="PretpoletniPregled_AvioTehnicarID_AT" />
+        <ScalarProperty Name="AvionID_AV" ColumnName="PretpoletniPregled_AvionID_AV" />
+      </EndProperty>
+      <EndProperty Name="Izvestava">
+        <ScalarProperty Name="ID_OZL" ColumnName="ID_OZL" />
+        <ScalarProperty Name="PretpoletniPregledID_AV" ColumnName="PretpoletniPregledID_AV" />
+        <ScalarProperty Name="PretpoletniPregledID_AT" ColumnName="PretpoletniPregledID_AT" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

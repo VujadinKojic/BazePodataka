@@ -1,0 +1,12 @@
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\ServerBase.exe.config
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\ServerBase.exe
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\ServerBase.pdb
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\obj\Debug\ServerBase.csprojAssemblyReference.cache
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\obj\Debug\ServerBase.csproj.CoreCompileInputs.cache
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\obj\Debug\ServerBase.exe
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\obj\Debug\ServerBase.pdb
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\EntityFramework.dll
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\EntityFramework.SqlServer.dll
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\EntityFramework.xml
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\bin\Debug\EntityFramework.SqlServer.xml
+H:\Baze Podataka 2\Projekat\ServerBase\ServerBase\obj\Debug\ServerBase.csproj.CopyComplete

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75c34766e89c44e5b125f333e32099a8" Name="Diagram1" ZoomLevel="104" >
+        <EntityTypeShape EntityType="MilitaryAviationBase.Radionica" Width="1.5" PointX="2" PointY="8.625" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.AvioTehnicar" Width="1.5" PointX="5.375" PointY="8.5" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Eskadrila" Width="1.5" PointX="10.625" PointY="8.5" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Avion" Width="1.5" PointX="5.375" PointY="2.625" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.PretpoletniPregled" Width="1.5" PointX="5.375" PointY="5.75" />
+        <AssociationConnector Association="MilitaryAviationBase.AvioTehnicarPretpoletniPregled" />
+        <AssociationConnector Association="MilitaryAviationBase.AvionPretpoletniPregled" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Pilot" Width="1.5" PointX="10.625" PointY="2.75" />
+        <AssociationConnector Association="MilitaryAviationBase.Leti" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.OZL" Width="1.5" PointX="10.625" PointY="5.75" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Izvestava" Width="1.5" PointX="8.125" PointY="5.625" />
+        <AssociationConnector Association="MilitaryAviationBase.IzvestavaOZL" />
+        <AssociationConnector Association="MilitaryAviationBase.Radi" />
+        <AssociationConnector Association="MilitaryAviationBase.OZLPilot" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.ElektroOpremaVazduhoplova" Width="1.5" PointX="3.875" PointY="12.5" />
+        <InheritanceConnector EntityType="MilitaryAviationBase.ElektroOpremaVazduhoplova" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.VazduhoplovIMotor" Width="1.5" PointX="5.875" PointY="12.5" />
+        <InheritanceConnector EntityType="MilitaryAviationBase.VazduhoplovIMotor" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.ElektronskaOpremaVazduhoplova" Width="1.5" PointX="7.75" PointY="12.5" />
+        <InheritanceConnector EntityType="MilitaryAviationBase.ElektronskaOpremaVazduhoplova" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Lovac" Width="1.5" PointX="4.125" PointY="0.625" />
+        <InheritanceConnector EntityType="MilitaryAviationBase.Lovac" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Transportni" Width="1.5" PointX="6.5" PointY="0.625" />
+        <InheritanceConnector EntityType="MilitaryAviationBase.Transportni" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Naoruzanje" Width="1.5" PointX="0.5" PointY="5.875" />
+        <AssociationConnector Association="MilitaryAviationBase.NaoruzanjeLovac" />
+        <AssociationConnector Association="MilitaryAviationBase.NaoruzanjeElektroOpremaVazduhoplova" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.OC" Width="1.5" PointX="2.75" PointY="3" />
+        <EntityTypeShape EntityType="MilitaryAviationBase.Uzima" Width="1.5" PointX="2.625" PointY="5.875" />
+        <AssociationConnector Association="MilitaryAviationBase.OCUzima" />
+        <AssociationConnector Association="MilitaryAviationBase.NaoruzanjeUzima" />
+        <AssociationConnector Association="MilitaryAviationBase.AvioTehnicarEskadrila" />
+        <AssociationConnector Association="MilitaryAviationBase.IzvestavaPretpoletniPregled" />
+        <AssociationConnector Association="MilitaryAviationBase.EskadrilaPilot" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
